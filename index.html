@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltınNeKadar - Anlık Canlı Altın Fiyatları ve Serbest Piyasa Takibi</title>
+    <meta name="description" content="Anlık ve canlı altın fiyatları, Kapalıçarşı serbest piyasa çeyrek, gram, ons altın kuru, canlı grafikler ve altın çevirici hesaplama aracı.">
+    <meta name="keywords" content="altın fiyatları, canlı altın, gram altın, çeyrek altın, ons altın, kapalıçarşı, altın çevirici, canlı borsa">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Live Ticker Bar -->
+    <div class="ticker-wrapper">
+        <div class="container ticker-container">
+            <div class="ticker-badge">
+                <span class="live-dot"></span>
+                <span>CANLI PİYASA</span>
+            </div>
+            <div class="ticker-track" id="tickerTrack">
+                <!-- Dynamically populated ticker items -->
+            </div>
+            <div class="market-status">
+                <i class="fa-solid fa-clock"></i>
+                <span id="marketClock">--:--:--</span>
+                <span class="status-pill open">Kapalıçarşı Açık</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo-area">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="brand-name">ALTIN<span class="highlight">NEKADAR</span></span>
+                        <span class="brand-sub">ANLIK FİNANS & PİYASA TAKİBİ</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="globalSearchInput" placeholder="Altın türü, ons, dolar veya haber ara... (Örn: Çeyrek)" autocomplete="off">
+                    <span class="search-shortcut">Ctrl + K</span>
+                </div>
+                <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+            </div>
+
+            <div class="header-actions">
+                <button class="action-btn" id="favModalBtn" title="Favorilerim">
+                    <i class="fa-solid fa-star"></i>
+                    <span class="badge" id="favCount">0</span>
+                </button>
+                <button class="action-btn" id="alarmModalBtn" title="Fiyat Alarmları">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge" id="alarmCount">0</span>
+                </button>
+                <button class="theme-toggle" id="themeToggleBtn" title="Koyu/Açık Tema Değiştir">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Navigation Category Bar -->
+    <nav class="sub-nav">
+        <div class="container sub-nav-content">
+            <ul class="nav-links">
+                <li class="active"><a href="#prices-section"><i class="fa-solid fa-chart-line"></i> Canlı Fiyatlar</a></li>
+                <li><a href="#chart-section"><i class="fa-solid fa-chart-area"></i> İnteraktif Grafik</a></li>
+                <li><a href="#converter-section"><i class="fa-solid fa-calculator"></i> Altın Çevirici</a></li>
+                <li><a href="#comparison-section"><i class="fa-solid fa-building-columns"></i> Banka vs Kapalıçarşı</a></li>
+                <li><a href="#news-section"><i class="fa-solid fa-newspaper"></i> Piyasa Haberleri</a></li>
+            </ul>
+            <div class="auto-refresh-indicator">
+                <i class="fa-solid fa-rotate spin-icon"></i>
+                <span>Her 3sn'de Canlı Güncelleme</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Top Summary Cards Grid -->
+    <section class="hero-summary container">
+        <div class="summary-card gold-primary" id="card-gram">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-coins gold-sparkle"></i>
+                    <div>
+                        <h3>Gram Altın</h3>
+                        <span class="code">GAU/TRY</span>
+                    </div>
+                </div>
+                <button class="fav-icon-btn" data-symbol="gram" title="Favorilere Ekle"><i class="fa-regular fa-star"></i></button>
+            </div>
+            <div class="card-body">
+                <div class="price-val" id="card-gram-price">₺3,485.40</div>
+                <div class="change-tag positive" id="card-gram-change">
+                    <i class="fa-solid fa-arrow-trend-up"></i> +%0.82 (+₺28.40)
+                </div>
+            </div>
+            <div class="card-footer">
+                <span>Alış: <strong id="card-gram-buy">₺3,480.10</strong></span>
+                <span>Satış: <strong id="card-gram-sell">₺3,485.40</strong></span>
+            </div>
+        </div>
+
+        <div class="summary-card" id="card-ceyrek">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-ring"></i>
+                    <div>
+                        <h3>Çeyrek Altın</h3>
+                        <span class="code">CEYREK</span>
+                    </div>
+                </div>
+                <button class="fav-icon-btn" data-symbol="ceyrek" title="Favorilere Ekle"><i class="fa-regular fa-star"></i></button>
+            </div>
+            <div class="card-body">
+                <div class="price-val" id="card-ceyrek-price">₺5,698.00</div>
+                <div class="change-tag positive" id="card-ceyrek-change">
+                    <i class="fa-solid fa-arrow-trend-up"></i> +%0.75 (+₺42.00)
+                </div>
+            </div>
+            <div class="card-footer">
+                <span>Alış: <strong id="card-ceyrek-buy">₺5,620.00</strong></span>
+                <span>Satış: <strong id="card-ceyrek-sell">₺5,698.00</strong></span>
+            </div>
+        </div>
+
+        <div class="summary-card" id="card-ons">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-globe"></i>
+                    <div>
+                        <h3>Ons Altın</h3>
+                        <span class="code">XAU/USD</span>
+                    </div>
+                </div>
+                <button class="fav-icon-btn" data-symbol="ons" title="Favorilere Ekle"><i class="fa-regular fa-star"></i></button>
+            </div>
+            <div class="card-body">
+                <div class="price-val" id="card-ons-price">$2,942.50</div>
+                <div class="change-tag positive" id="card-ons-change">
+                    <i class="fa-solid fa-arrow-trend-up"></i> +%0.45 (+$13.20)
+                </div>
+            </div>
+            <div class="card-footer">
+                <span>En Düşük: <strong id="card-ons-low">$2,925.10</strong></span>
+                <span>En Yüksek: <strong id="card-ons-high">$2,948.80</strong></span>
+            </div>
+        </div>
+
+        <div class="summary-card" id="card-dolar">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <div>
+                        <h3>Dolar / TL</h3>
+                        <span class="code">USD/TRY</span>
+                    </div>
+                </div>
+                <button class="fav-icon-btn" data-symbol="dolar" title="Favorilere Ekle"><i class="fa-regular fa-star"></i></button>
+            </div>
+            <div class="card-body">
+                <div class="price-val" id="card-dolar-price">₺36.8420</div>
+                <div class="change-tag negative" id="card-dolar-change">
+                    <i class="fa-solid fa-arrow-trend-down"></i> -%0.08 (-₺0.03)
+                </div>
+            </div>
+            <div class="card-footer">
+                <span>Alış: <strong id="card-dolar-buy">₺36.8150</strong></span>
+                <span>Satış: <strong id="card-dolar-sell">₺36.8420</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout Grid -->
+    <main class="main-layout container">
+        <!-- Left Main Column (Table & Chart) -->
+        <div class="content-left">
+            
+            <!-- Live Gold Prices Table Section -->
+            <section class="section-block" id="prices-section">
+                <div class="block-header">
+                    <div class="block-title">
+                        <h2><i class="fa-solid fa-table-list highlight-text"></i> Canlı Altın ve Döviz Fiyatları</h2>
+                        <p class="subtitle">Kapalıçarşı serbest piyasa ve anlık banka kurları</p>
+                    </div>
+
+                    <div class="table-filter-group">
+                        <div class="category-tabs" id="tableTabs">
+                            <button class="tab-btn active" data-cat="all">Tümü</button>
+                            <button class="tab-btn" data-cat="ziynet">Ziynet & Sikke</button>
+                            <button class="tab-btn" data-cat="ayar">Ayar Altınlar</button>
+                            <button class="tab-btn" data-cat="ons">ONS & Külçe</button>
+                            <button class="tab-btn" data-cat="doviz">Döviz & Emtia</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="gold-data-table" id="goldTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px;"></th>
+                                <th>Tür / Enstrüman</th>
+                                <th class="text-right">Alış (₺)</th>
+                                <th class="text-right">Satış (₺)</th>
+                                <th class="text-right">Değişim (%)</th>
+                                <th class="text-center">Günlük Bant (Min - Max)</th>
+                                <th class="text-right">Makas</th>
+                                <th class="text-center">Saat</th>
+                                <th class="text-center" style="width: 70px;">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="goldTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Interactive Chart Section -->
+            <section class="section-block" id="chart-section">
+                <div class="block-header">
+                    <div class="selected-asset-info">
+                        <div class="asset-title-group">
+                            <span class="asset-badge" id="chartAssetBadge">GAU/TRY</span>
+                            <h2 id="chartAssetTitle">Gram Altın Fiyat Grafiği</h2>
+                        </div>
+                        <div class="asset-price-display">
+                            <span class="current-price" id="chartCurrentPrice">₺3,485.40</span>
+                            <span class="price-change positive" id="chartPriceChange">+₺28.40 (%0.82)</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-controls">
+                        <div class="time-filters" id="chartTimeFilters">
+                            <button class="time-btn" data-period="1D">1G</button>
+                            <button class="time-btn active" data-period="1W">1H</button>
+                            <button class="time-btn" data-period="1M">1A</button>
+                            <button class="time-btn" data-period="3M">3A</button>
+                            <button class="time-btn" data-period="1Y">1Y</button>
+                        </div>
+                        <div class="chart-type-toggle" id="chartTypeToggle">
+                            <button class="type-btn active" data-type="area" title="Alan Grafiği"><i class="fa-solid fa-chart-area"></i></button>
+                            <button class="type-btn" data-type="line" title="Çizgi Grafiği"><i class="fa-solid fa-chart-line"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-canvas-wrapper">
+                        <canvas id="mainChartCanvas"></canvas>
+                        <div class="chart-tooltip" id="chartTooltip"></div>
+                    </div>
+                    <div class="chart-stats-bar">
+                        <div class="stat-item">
+                            <span>Dönem İçi En Düşük:</span>
+                            <strong id="statLow">₺3,390.00</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Dönem İçi En Yüksek:</span>
+                            <strong id="statHigh">₺3,510.50</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Ortalama Fiyat:</span>
+                            <strong id="statAvg">₺3,445.20</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Volatilite:</span>
+                            <strong class="text-warning">%1.84</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bank vs Grand Bazaar Comparison Section -->
+            <section class="section-block" id="comparison-section">
+                <div class="block-header">
+                    <div class="block-title">
+                        <h2><i class="fa-solid fa-building-columns highlight-text"></i> Kapalıçarşı Serbest Piyasa vs Banka Kurları</h2>
+                        <p class="subtitle">Anlık makas aralığı ve alış-satış avantaj karşılaştırması</p>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card bazaar">
+                        <div class="comp-header">
+                            <i class="fa-solid fa-shop"></i>
+                            <div>
+                                <h3>Kapalıçarşı Serbest Piyasa</h3>
+                                <span class="tag-popular">En Dar Makas</span>
+                            </div>
+                        </div>
+                        <div class="comp-row">
+                            <span>Gram Altın Alış:</span>
+                            <strong>₺3,480.10</strong>
+                        </div>
+                        <div class="comp-row">
+                            <span>Gram Altın Satış:</span>
+                            <strong>₺3,485.40</strong>
+                        </div>
+                        <div class="comp-row highlight">
+                            <span>Alış-Satış Makası:</span>
+                            <strong class="text-success">₺5.30 (%0.15)</strong>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card bank">
+                        <div class="comp-header">
+                            <i class="fa-solid fa-landmark"></i>
+                            <div>
+                                <h3>Ortalama Banka Kuru</h3>
+                                <span class="tag-info">Mesai Saatleri Dışı Genişler</span>
+                            </div>
+                        </div>
+                        <div class="comp-row">
+                            <span>Gram Altın Alış:</span>
+                            <strong>₺3,435.00</strong>
+                        </div>
+                        <div class="comp-row">
+                            <span>Gram Altın Satış:</span>
+                            <strong>₺3,520.00</strong>
+                        </div>
+                        <div class="comp-row highlight">
+                            <span>Alış-Satış Makası:</span>
+                            <strong class="text-danger">₺85.00 (%2.45)</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Historical Performance Matrix Section -->
+            <section class="section-block">
+                <div class="block-header">
+                    <div class="block-title">
+                        <h2><i class="fa-solid fa-trophy highlight-text"></i> Altın ve Yatırım Araçları Getiri Performansı</h2>
+                        <p class="subtitle">Karşılaştırmalı getiri oranları (%)</p>
+                    </div>
+                </div>
+
+                <div class="performance-table-wrapper">
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>Yatırım Aracı</th>
+                                <th class="text-right">1 Haftalık</th>
+                                <th class="text-right">1 Aylık</th>
+                                <th class="text-right">3 Aylık</th>
+                                <th class="text-right">1 Yıllık</th>
+                                <th class="text-right">Yılbaşı Sene Başı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fa-solid fa-coins gold-text"></i> <strong>Gram Altın</strong></td>
+                                <td class="text-right text-success">+%1.42</td>
+                                <td class="text-right text-success">+%4.85</td>
+                                <td class="text-right text-success">+%12.30</td>
+                                <td class="text-right text-success">+%48.60</td>
+                                <td class="text-right text-success">+%28.40</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-globe blue-text"></i> <strong>Ons Altın ($)</strong></td>
+                                <td class="text-right text-success">+%0.85</td>
+                                <td class="text-right text-success">+%2.90</td>
+                                <td class="text-right text-success">+%8.40</td>
+                                <td class="text-right text-success">+%32.10</td>
+                                <td class="text-right text-success">+%18.20</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-dollar-sign green-text"></i> <strong>Dolar (USD/TRY)</strong></td>
+                                <td class="text-right text-danger">-%0.12</td>
+                                <td class="text-right text-success">+%1.10</td>
+                                <td class="text-right text-success">+%3.40</td>
+                                <td class="text-right text-success">+%18.50</td>
+                                <td class="text-right text-success">+%11.40</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-chart-pie purple-text"></i> <strong>BIST 100 Endeksi</strong></td>
+                                <td class="text-right text-danger">-%1.20</td>
+                                <td class="text-right text-success">+%3.10</td>
+                                <td class="text-right text-danger">-%2.40</td>
+                                <td class="text-right text-success">+%22.10</td>
+                                <td class="text-right text-success">+%14.80</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Sidebar (Calculator, News & Alerts) -->
+        <aside class="content-right">
+            
+            <!-- Gold Converter Widget -->
+            <div class="sidebar-block" id="converter-section">
+                <div class="widget-title">
+                    <i class="fa-solid fa-calculator highlight-text"></i>
+                    <h3>Altın & Döviz Çevirici</h3>
+                </div>
+
+                <div class="converter-box">
+                    <div class="calc-type-selector">
+                        <label class="calc-radio">
+                            <input type="radio" name="calcType" value="sell" checked>
+                            <span><i class="fa-solid fa-hand-holding-dollar"></i> Bozdurma (Satış)</span>
+                        </label>
+                        <label class="calc-radio">
+                            <input type="radio" name="calcType" value="buy">
+                            <span><i class="fa-solid fa-cart-shopping"></i> Satın Alma (Alış)</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calcAmount">Miktar / Tutar</label>
+                        <div class="input-with-icon">
+                            <input type="number" id="calcAmount" value="1" min="0.01" step="any" placeholder="Miktar giriniz">
+                            <span class="unit-label" id="fromUnitLabel">Adet</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fromAsset">Dönüştürülen Birim</label>
+                        <select id="fromAsset" class="custom-select">
+                            <optgroup label="Altın Türleri">
+                                <option value="gram" selected>Gram Altın</option>
+                                <option value="ceyrek">Çeyrek Altın</option>
+                                <option value="yarim">Yarım Altın</option>
+                                <option value="tam">Tam Altın / Ziynet</option>
+                                <option value="cumhuriyet">Cumhuriyet Altını (Ata)</option>
+                                <option value="bilezik22">22 Ayar Bilezik (Gram)</option>
+                                <option value="ons">Ons Altın ($)</option>
+                            </optgroup>
+                            <optgroup label="Para Birimleri">
+                                <option value="try">Türk Lirası (TL)</option>
+                                <option value="dolar">Amerikan Doları (USD)</option>
+                                <option value="euro">Euro (EUR)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="swap-row">
+                        <button class="swap-btn" id="swapConverterBtn" title="Birimleri Değiştir">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="toAsset">Hedef Birim</label>
+                        <select id="toAsset" class="custom-select">
+                            <option value="try" selected>Türk Lirası (TL)</option>
+                            <option value="gram">Gram Altın</option>
+                            <option value="ceyrek">Çeyrek Altın</option>
+                            <option value="dolar">Amerikan Doları (USD)</option>
+                            <option value="euro">Euro (EUR)</option>
+                        </select>
+                    </div>
+
+                    <div class="converter-result-card">
+                        <div class="result-label">Hesaplanan Toplam Tutar</div>
+                        <div class="result-val" id="calcResultValue">₺3,485.40</div>
+                        <div class="result-details" id="calcResultDetails">
+                            1 Gram Altın = ₺3,485.40
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Alarm Quick Form Widget -->
+            <div class="sidebar-block">
+                <div class="widget-title">
+                    <i class="fa-solid fa-bell-ring highlight-text"></i>
+                    <h3>Fiyat Alarmı Oluştur</h3>
+                </div>
+                <form id="quickAlarmForm" class="alarm-form">
+                    <div class="form-group">
+                        <label for="alarmAsset">Enstrüman</label>
+                        <select id="alarmAsset" class="custom-select">
+                            <option value="gram">Gram Altın</option>
+                            <option value="ceyrek">Çeyrek Altın</option>
+                            <option value="ons">Ons Altın</option>
+                            <option value="dolar">Dolar / TL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alarmTargetPrice">Hedef Fiyat</label>
+                        <input type="number" id="alarmTargetPrice" placeholder="Örn: 3500" step="any" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">
+                        <i class="fa-solid fa-plus"></i> Alarm Ekle
+                    </button>
+                </form>
+            </div>
+
+            <!-- News & Analysis Feed Widget -->
+            <div class="sidebar-block" id="news-section">
+                <div class="widget-title">
+                    <i class="fa-solid fa-newspaper highlight-text"></i>
+                    <h3>Son Dakika Altın & Piyasa Haberleri</h3>
+                </div>
+
+                <div class="news-list" id="newsList">
+                    <article class="news-card">
+                        <span class="news-category badge-danger">Son Dakika</span>
+                        <h4><a href="#">Merkez Bankası Faiz Kararı Sonrası Altın Piyasalarında Son Durum</a></h4>
+                        <p>Küresel piyasalarda Ons altın 2.940 dolar seviyesinde hareket ederken gram altın yeni rekor tazeledi...</p>
+                        <div class="news-meta">
+                            <span><i class="fa-regular fa-clock"></i> 15 dakika önce</span>
+                            <span><i class="fa-regular fa-eye"></i> 4.2k okuma</span>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <span class="news-category badge-warning">Analiz</span>
+                        <h4><a href="#">Uzmanlardan Kapalıçarşı Altın Yorumları: Çeyrek ve Gram Fiyatı Ne Olur?</a></h4>
+                        <p>Kapalıçarşı kuyumcular derneği temsilcileri altın alış satış makaslarının neden daraldığını değerlendirdi...</p>
+                        <div class="news-meta">
+                            <span><i class="fa-regular fa-clock"></i> 1 saat önce</span>
+                            <span><i class="fa-regular fa-eye"></i> 8.9k okuma</span>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <span class="news-category badge-info">Piyasalar</span>
+                        <h4><a href="#">ABD Enflasyon Verisi Bekleniyor: Ons Altında Kritik Seviyeler Neler?</a></h4>
+                        <p>Fed yetkililerinin faiz patikasına ilişkin mesajları altın yatırımcıları tarafından yakından takip ediliyor...</p>
+                        <div class="news-meta">
+                            <span><i class="fa-regular fa-clock"></i> 3 saat önce</span>
+                            <span><i class="fa-regular fa-eye"></i> 12.1k okuma</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i class="fa-solid fa-coins"></i></div>
+                    <span class="brand-name">ALTIN<span class="highlight">NEKADAR</span></span>
+                </a>
+                <p>Türkiye'nin en hızlı ve şeffaf canlı altın, serbest piyasa Kapalıçarşı kurları, döviz ve grafik takip platformu.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Hızlı Bağlantılar</h4>
+                <ul>
+                    <li><a href="#prices-section">Gram Altın Fiyatı</a></li>
+                    <li><a href="#prices-section">Çeyrek Altın Kaç TL?</a></li>
+                    <li><a href="#prices-section">Kapalıçarşı Ziynet Fiyatları</a></li>
+                    <li><a href="#converter-section">Altın Çevirici Hesaplama</a></li>
+                    <li><a href="#chart-section">Canlı ONS Altın Grafiği</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Altın Türleri</h4>
+                <ul>
+                    <li><a href="#">22 Ayar Bilezik Fiyatı</a></li>
+                    <li><a href="#">Cumhuriyet Altını (Ata Lira)</a></li>
+                    <li><a href="#">Yarım Altın / Tam Altın</a></li>
+                    <li><a href="#">14 Ayar & 18 Ayar Altın</a></li>
+                    <li><a href="#">Gümüş TL & ONS Fiyatı</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-notice">
+                <h4>Yasal Uyarı</h4>
+                <p>Sitemizde sunulan canlı altın ve döviz fiyatları bilgilendirme amaçlıdır. Yatırım tavsiyesi niteliği taşımaz. Veriler serbest piyasa ve banka kaynaklarından simüle edilerek anlık güncellenmektedir.</p>
+                <div class="copyright">
+                    © 2026 AltınNeKadar. Tüm hakları saklıdır.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Favorites Modal -->
+    <div class="modal-overlay" id="favModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-star highlight-text"></i> Favori Enstrümanlarım</h3>
+                <button class="close-modal-btn" id="closeFavModal">&times;</button>
+            </div>
+            <div class="modal-body" id="favModalBody">
+                <p class="empty-state">Henüz favori enstrüman eklemediniz. Tablodaki yıldız ikonlarına basarak ekleyebilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alarms Modal -->
+    <div class="modal-overlay" id="alarmModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-bell highlight-text"></i> Aktif Fiyat Alarmlarım</h3>
+                <button class="close-modal-btn" id="closeAlarmModal">&times;</button>
+            </div>
+            <div class="modal-body" id="alarmModalBody">
+                <p class="empty-state">Aktif kurulmuş alarmınız bulunmuyor.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Popup Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Application JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
