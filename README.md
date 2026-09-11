@@ -30,4 +30,4 @@ Türkiye’de altın fiyatları konusunda kullanıcıya faydalı, hızlı, mobil
 - `/kullanim-kosullari/` - Kullanım Koşulları
 
 ## 📌 Google AdSense Notu
-> Google AdSense hesabı onaylandıktan sonra kök dizine `ads.txt` dosyası eklenecektir.
+> Google AdSense hesabı onaylandıktan sonra kök dizine `ads.txt` dosyası eklenecektir. 
