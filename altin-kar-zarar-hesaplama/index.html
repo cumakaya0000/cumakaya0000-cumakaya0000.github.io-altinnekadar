@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altın Kâr / Zarar Hesaplama Aracı | ALTN Ne Kadar</title>
+    <meta name="description" content="Altın yatırımlarınızın güncel getiri ve kârlılık durumunu hesaplayın. Alış fiyatı, miktar ve güncel kur üzerinden net TL ve yüzdesel kâr/zarar hesabı.">
+    <link rel="canonical" href="https://altnnekadar.com/altin-kar-zarar-hesaplama/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Altın Kâr / Zarar Hesaplama Aracı | ALTN Ne Kadar">
+    <meta property="og:description" content="Altın yatırımlarınızın güncel getiri ve kârlılık durumunu hesaplayın.">
+    <meta property="og:url" content="https://altnnekadar.com/altin-kar-zarar-hesaplama/">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://altnnekadar.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Kâr / Zarar Hesaplama", "item": "https://altnnekadar.com/altin-kar-zarar-hesaplama/" }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="header-ticker">
+        <div class="container ticker-content">
+            <div class="demo-notice-badge">
+                <i class="fa-solid fa-flask"></i>
+                <span>Veri Kaynağı: Gösterge Kuru (Örnek Veri)</span>
+            </div>
+            <div class="ticker-items-scroll" id="tickerTrack"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../" class="brand-logo">
+                <i class="fa-solid fa-coins"></i>
+                <div class="logo-title">ALTN <span>Ne Kadar</span></div>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../">Ana Sayfa</a></li>
+                    <li><a href="../gram-altin/">Gram Altın</a></li>
+                    <li><a href="../ceyrek-altin/">Çeyrek Altın</a></li>
+                    <li><a href="../altin-hesaplama/">Altın Hesaplama</a></li>
+                    <li><a href="../altin-kar-zarar-hesaplama/" class="active">Kâr / Zarar</a></li>
+                    <li><a href="../altin-nedir/">Bilgi Rehberi</a></li>
+                </ul>
+
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Koyu/Açık Tema Değiştir">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li><a href="../">Ana Sayfa</a></li>
+                <li class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></li>
+                <li style="color: var(--text-primary);">Altın Kâr / Zarar Hesaplama</li>
+            </ul>
+        </nav>
+
+        <h1>Altın Kâr / Zarar Hesaplama Aracı</h1>
+        <p style="margin-bottom: 20px; color: var(--text-secondary);">Satın aldığınız altınların alış maliyeti ve güncel piyasa fiyatına göre net kâr veya zarar durumunuzu hesaplayın.</p>
+
+        <!-- Main Profit / Loss Calculator Tool Box -->
+        <section class="calculator-box">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                <div class="form-group">
+                    <label for="plAssetSelect">Hızlı Kur Getir (Opsiyonel)</label>
+                    <select id="plAssetSelect" class="form-select">
+                        <option value="custom">Özel Fiyat Gir</option>
+                        <option value="gram" selected>Gram Altın (₺3.485,40)</option>
+                        <option value="ceyrek">Çeyrek Altın (₺5.698,00)</option>
+                        <option value="cumhuriyet">Cumhuriyet Altını (₺23.480,00)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="plBuyPrice">Birim Alış Fiyatınız (TL)</label>
+                    <input type="number" id="plBuyPrice" class="form-control" value="3000" min="1" step="any" placeholder="Örn: 3000">
+                </div>
+
+                <div class="form-group">
+                    <label for="plQuantity">Alınan Miktar / Adet</label>
+                    <input type="number" id="plQuantity" class="form-control" value="10" min="0.01" step="any" placeholder="Örn: 10">
+                </div>
+
+                <div class="form-group">
+                    <label for="plCurrentPrice">Güncel Birim Fiyatı (TL)</label>
+                    <input type="number" id="plCurrentPrice" class="form-control" value="3485.40" min="1" step="any" placeholder="Örn: 3485.40">
+                </div>
+            </div>
+
+            <!-- Result Cards Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 24px;">
+                <div style="background: var(--bg-secondary); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">TOPLAM YATIRIM</div>
+                    <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-primary);" id="plResInvestment">₺30.000,00</div>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">GÜNCEL DEĞER</div>
+                    <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-primary);" id="plResCurrentVal">₺34.854,00</div>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color);" id="plResProfitTLBox">
+                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">NET KÂR / ZARAR (TL)</div>
+                    <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 800;" id="plResProfitTL">+₺4.854,00</div>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color);" id="plResProfitPercentBox">
+                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">KÂR / ZARAR (%)</div>
+                    <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 800;" id="plResProfitPercent">+%16,18</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Placeholder -->
+        <div class="ad-slot-container">
+            <div class="ad-slot">Reklam Alanı</div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="content-article">
+            <h2>Altın Kâr / Zarar Hesaplaması Nasıl Yapılır?</h2>
+            <p>Altın yatırımlarınızın başarısını ölçmek için toplam maliyet ile güncel piyasa değeri karşılaştırılır:</p>
+            <ul>
+                <li><strong>Toplam Yatırım Maliyeti:</strong> <code>Satın Alma Fiyatı × Alınan Miktar</code></li>
+                <li><strong>Güncel Toplam Değer:</strong> <code>Güncel Piyasa Fiyatı × Alınan Miktar</code></li>
+                <li><strong>Net Kâr / Zarar (TL):</strong> <code>Güncel Toplam Değer - Toplam Yatırım Maliyeti</code></li>
+                <li><strong>Yüzdesel Getiri (%):</strong> <code>(Net Kâr / Toplam Yatırım) × 100</code></li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-disclaimer">
+                <p>Bu sitede yer alan fiyatlar bilgilendirme amaçlıdır. Veriler gecikmeli veya gösterge niteliğinde olabilir ve yatırım tavsiyesi niteliği taşımaz.</p>
+                <p style="margin-top: 6px;">© 2026 ALTN Ne Kadar. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/gold-data.js"></script>
+    <script src="../assets/js/calculators.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const assetSelect = document.getElementById('plAssetSelect');
+            const buyPriceInput = document.getElementById('plBuyPrice');
+            const qtyInput = document.getElementById('plQuantity');
+            const currPriceInput = document.getElementById('plCurrentPrice');
+
+            const resInvest = document.getElementById('plResInvestment');
+            const resCurrVal = document.getElementById('plResCurrentVal');
+            const resProfitTL = document.getElementById('plResProfitTL');
+            const resProfitPercent = document.getElementById('plResProfitPercent');
+
+            function calculatePL() {
+                if (!window.GoldCalculators || !window.GoldData) return;
+                const buyP = parseFloat(buyPriceInput.value) || 0;
+                const qty = parseFloat(qtyInput.value) || 0;
+                const currP = parseFloat(currPriceInput.value) || 0;
+
+                const res = window.GoldCalculators.calculateProfitLoss(buyP, qty, currP);
+
+                resInvest.textContent = window.GoldData.formatMoney(res.totalInvestment);
+                resCurrVal.textContent = window.GoldData.formatMoney(res.currentTotalValue);
+
+                const sign = res.isProfit ? '+' : '';
+                const colorClass = res.isProfit ? 'text-success' : 'text-danger';
+
+                resProfitTL.className = `font-heading ${colorClass}`;
+                resProfitTL.textContent = `${sign}${window.GoldData.formatMoney(res.profitLossTL)}`;
+
+                resProfitPercent.className = `font-heading ${colorClass}`;
+                resProfitPercent.textContent = `${sign}%${res.profitLossPercent.toFixed(2)}`;
+            }
+
+            assetSelect.addEventListener('change', () => {
+                const val = assetSelect.value;
+                if (val !== 'custom' && window.GoldData) {
+                    const item = window.GoldData.getAsset(val);
+                    if (item) {
+                        currPriceInput.value = item.sell;
+                        calculatePL();
+                    }
+                }
+            });
+
+            [buyPriceInput, qtyInput, currPriceInput].forEach(el => {
+                if (el) el.addEventListener('input', calculatePL);
+            });
+
+            calculatePL();
+        });
+    </script>
+</body>
+</html>

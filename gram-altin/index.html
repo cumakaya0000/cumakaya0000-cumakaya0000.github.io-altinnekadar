@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gram Altın Ne Kadar? Güncel Gram Altın Fiyatı ve Hesaplama | ALTN Ne Kadar</title>
+    <meta name="description" content="Güncel gram altın alış ve satış fiyatlarını öğrenin. Gram altın hesaplama aracı ile istediğiniz miktardaki gram altının TL karşılığını anında hesaplayın.">
+    <link rel="canonical" href="https://altnnekadar.com/gram-altin/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Gram Altın Ne Kadar? Güncel Gram Altın Fiyatı ve Hesaplama | ALTN Ne Kadar">
+    <meta property="og:description" content="Güncel gram altın alış ve satış fiyatlarını öğrenin. Gram altın hesaplama aracı ile istediğiniz miktardaki gram altının TL karşılığını anında hesaplayın.">
+    <meta property="og:url" content="https://altnnekadar.com/gram-altin/">
+    <meta property="og:type" content="article">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://altnnekadar.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Altın Türleri", "item": "https://altnnekadar.com/#prices" },
+        { "@type": "ListItem", "position": 3, "name": "Gram Altın", "item": "https://altnnekadar.com/gram-altin/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "1 gram altın kaç TL?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Gram altın fiyatı ons altın değeri ve Dolar/TL kuruna bağlı olarak anlık belirlenmektedir. Güncel gösterge fiyatı tablomuzda sunulmaktadır." }
+        },
+        {
+          "@type": "Question",
+          "name": "Gram altın kaç ayardır?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Piyasada genellikle 24 ayar (%99.9 saflık - 999.9 milyem) ve 22 ayar (%91.6 saflık) külçe/gram altınlar bulunmaktadır." }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="header-ticker">
+        <div class="container ticker-content">
+            <div class="demo-notice-badge">
+                <i class="fa-solid fa-flask"></i>
+                <span>Veri Kaynağı: Gösterge Kuru (Örnek Veri)</span>
+            </div>
+            <div class="ticker-items-scroll" id="tickerTrack"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../" class="brand-logo">
+                <i class="fa-solid fa-coins"></i>
+                <div class="logo-title">ALTN <span>Ne Kadar</span></div>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../">Ana Sayfa</a></li>
+                    <li><a href="../gram-altin/" class="active">Gram Altın</a></li>
+                    <li><a href="../ceyrek-altin/">Çeyrek Altın</a></li>
+                    <li><a href="../altin-hesaplama/">Altın Hesaplama</a></li>
+                    <li><a href="../altin-kar-zarar-hesaplama/">Kâr / Zarar</a></li>
+                    <li><a href="../altin-nedir/">Bilgi Rehberi</a></li>
+                </ul>
+
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Koyu/Açık Tema Değiştir">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li><a href="../">Ana Sayfa</a></li>
+                <li class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></li>
+                <li><a href="../">Altın Türleri</a></li>
+                <li class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></li>
+                <li style="color: var(--text-primary);">Gram Altın</li>
+            </ul>
+        </nav>
+
+        <h1>Gram Altın Ne Kadar?</h1>
+        <p style="margin-bottom: 20px; color: var(--text-secondary);">Güncel gram altın alış ve satış değerleri, teknik özellikleri ve pratik hesaplama aracı.</p>
+
+        <!-- Detail Price Hero Component -->
+        <section class="detail-price-hero">
+            <div class="hero-price-item">
+                <span class="label">Gram Altın Satış</span>
+                <span class="val" id="detSell">₺3.485,40</span>
+            </div>
+            <div class="hero-price-item">
+                <span class="label">Gram Altın Alış</span>
+                <span class="val" id="detBuy">₺3.480,10</span>
+            </div>
+            <div class="hero-price-item">
+                <span class="label">Günlük Değişim</span>
+                <span class="val text-success" id="detChange">+%0.82</span>
+            </div>
+            <div class="hero-price-item">
+                <span class="label">Veri Kaynağı</span>
+                <span class="val" style="font-size: 14px; font-weight: 600;">Gösterge Kuru (Demo)</span>
+            </div>
+        </section>
+
+        <!-- Mini Calculator Tool Component -->
+        <section class="calculator-box">
+            <h3><i class="fa-solid fa-calculator highlight-text"></i> Gram Altın Hesaplama Aracı</h3>
+            <p style="font-size: 13px; margin-bottom: 14px;">Miktar girerek istediğiniz gram altının toplam TL değerini hesaplayın.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label for="gramInput">Gram Miktarı</label>
+                    <input type="number" id="gramInput" class="form-control" value="10" min="0.1" step="any">
+                </div>
+                <div class="form-group">
+                    <label for="gramRateType">İşlem Türü</label>
+                    <select id="gramRateType" class="form-select">
+                        <option value="sell">Satış (Altın Alacağım)</option>
+                        <option value="buy">Alış (Altın Bozduracağım)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="calc-results-display">
+                <div style="font-size: 12px; color: var(--text-muted);">HESAPLANAN TOPLAM TUTAR</div>
+                <div class="result-main-val" id="gramCalcResult">₺34.854,00</div>
+                <div style="font-size: 12px; color: var(--text-secondary);" id="gramCalcDetail">10 Gram × ₺3.485,40</div>
+            </div>
+        </section>
+
+        <!-- Ad Placeholder -->
+        <div class="ad-slot-container">
+            <div class="ad-slot">Reklam Alanı</div>
+        </div>
+
+        <!-- Informational Article Content -->
+        <article class="content-article">
+            <h2>Gram Altın Nedir?</h2>
+            <p>Gram altın, 1 gram ağırlığındaki standart saf veya alaşımlı külçe altını ifade eder. Türkiye'de en çok tercih edilen bireysel yatırım aracı ve birikim yöntemlerinin başında gelir. Darphane tarafından basılan ambalajlı külçe gram altınlar genellikle 24 ayar (999.9 saflık) veya 22 ayar (916 saflık) olarak üretilir.</p>
+
+            <h2>Gram Altın Fiyatı Nasıl Hesaplanır?</h2>
+            <p>Gram altının Türk Lirası cinsinden fiyatı doğrudan <strong>Ons Altın ($)</strong> fiyatı ve <strong>Dolar/TL ($/₺)</strong> kuru üzerinden formüle edilir:</p>
+            <p style="background: var(--bg-secondary); padding: 12px; border-radius: var(--radius-sm); font-family: monospace;">
+                Gram Altın (TL) = (Ons Altın Fiyatı / 31.1034768) × Dolar/TL Kuru
+            </p>
+
+            <h2>Gram Altın Teknik Özellikleri</h2>
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Özellik</th>
+                        <th>Değer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Saflık / Ayar</td>
+                        <td>24 Ayar (999.9 Milyem) / 22 Ayar (916 Milyem)</td>
+                    </tr>
+                    <tr>
+                        <td>Standart Ağırlık</td>
+                        <td>1.00 Gram</td>
+                    </tr>
+                    <tr>
+                        <td>Üretim Şekli</td>
+                        <td>Lisanslı Rafineriler ve Darphane Standartları</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Gram Altın Alırken Nelere Dikkat Edilir?</h2>
+            <ul>
+                <li>Ambalaj üzerindeki seri numarası ve rafineri damgasına dikkat ediniz.</li>
+                <li>İşçilik maliyetinin en düşük olduğu yatırım araçlarından biri olduğu için bozdururken değer kaybı minimumdur.</li>
+                <li>Alış-satış arasındaki makas oranını farklı kuyumcu ve kurumlar arasında karşılaştırınız.</li>
+            </ul>
+        </article>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Gram Altın Hakkında Sık Sorulan Sorular</h2>
+            <div class="faq-item">
+                <div class="faq-question">1 gram altın kaç TL?</div>
+                <div class="faq-answer">Gram altın fiyatı ons altın değeri ve Dolar/TL kuruna bağlı olarak anlık belirlenmektedir. Güncel gösterge fiyatı sayfamızdaki kartta sunulmaktadır.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Gram altın kaç ayardır?</div>
+                <div class="faq-answer">Piyasada ambalajlı gram altınlar ağırlıklı olarak 24 ayar (%99.9 saflık) veya 22 ayar (%91.6 saflık) standartlarında satılmaktadır.</div>
+            </div>
+        </section>
+
+        <!-- Related Links -->
+        <section style="margin: 30px 0;">
+            <h3>İlgili Sayfalar</h3>
+            <p>Diğer altın türlerini ve hesaplama araçlarını inceleyebilirsiniz:</p>
+            <ul style="padding-left: 20px; color: var(--text-secondary);">
+                <li><a href="../ceyrek-altin/">Çeyrek Altın Fiyatı ve Detayları</a></li>
+                <li><a href="../ons-altin/">Ons Altın Fiyatı ve Dolar İlişkisi</a></li>
+                <li><a href="../altin-hesaplama/">Tüm Altın Türleri İçin Hesaplama Aracı</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="brand-logo" style="margin-bottom: 12px;">
+                        <i class="fa-solid fa-coins"></i>
+                        <div class="logo-title">ALTN <span>Ne Kadar</span></div>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-muted);">Güncel altın fiyatları ve rehber platformu.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Altın Türleri</h4>
+                    <ul class="footer-links">
+                        <li><a href="../gram-altin/">Gram Altın</a></li>
+                        <li><a href="../ceyrek-altin/">Çeyrek Altın</a></li>
+                        <li><a href="../yarim-altin/">Yarım Altın</a></li>
+                        <li><a href="../cumhuriyet-altini/">Cumhuriyet Altını</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Araçlar</h4>
+                    <ul class="footer-links">
+                        <li><a href="../altin-hesaplama/">Altın Hesaplama</a></li>
+                        <li><a href="../altin-kar-zarar-hesaplama/">Kâr / Zarar Hesaplama</a></li>
+                        <li><a href="../altin-nedir/">Altın Nedir?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kurumsal</h4>
+                    <ul class="footer-links">
+                        <li><a href="../hakkimizda/">Hakkımızda</a></li>
+                        <li><a href="../gizlilik-politikasi/">Gizlilik Politikası</a></li>
+                        <li><a href="../kullanim-kosullari/">Kullanım Koşulları</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p>Bu sitede yer alan fiyatlar bilgilendirme amaçlıdır. Veriler gecikmeli veya gösterge niteliğinde olabilir ve yatırım tavsiyesi niteliği taşımaz.</p>
+                <p style="margin-top: 6px;">© 2026 ALTN Ne Kadar. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/gold-data.js"></script>
+    <script src="../assets/js/calculators.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('gramInput');
+            const rateSelect = document.getElementById('gramRateType');
+            const resultEl = document.getElementById('gramCalcResult');
+            const detailEl = document.getElementById('gramCalcDetail');
+
+            function updateCalc() {
+                if (!window.GoldCalculators || !window.GoldData) return;
+                const res = window.GoldCalculators.calculateGoldValue('gram', input.value, rateSelect.value);
+                resultEl.textContent = window.GoldData.formatMoney(res.totalTL);
+                detailEl.textContent = `${res.amount} Gram × ${window.GoldData.formatMoney(res.unitPrice)}`;
+            }
+
+            if (input && rateSelect) {
+                input.addEventListener('input', updateCalc);
+                rateSelect.addEventListener('change', updateCalc);
+                updateCalc();
+            }
+        });
+    </script>
+</body>
+</html>

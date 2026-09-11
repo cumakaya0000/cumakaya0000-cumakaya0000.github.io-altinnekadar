@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altın Hesaplama Aracı - Canlı Altın Çevirici | ALTN Ne Kadar</title>
+    <meta name="description" content="Pratik altın hesaplama ve çevirici aracı. Gram, çeyrek, yarım, tam ve cumhuriyet altını bozdurma veya satın alma TL değerlerini hesaplayın.">
+    <link rel="canonical" href="https://altnnekadar.com/altin-hesaplama/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Altın Hesaplama Aracı - Canlı Altın Çevirici | ALTN Ne Kadar">
+    <meta property="og:description" content="Pratik altın hesaplama ve çevirici aracı. Gram, çeyrek, cumhuriyet altını TL karşılığını hesaplayın.">
+    <meta property="og:url" content="https://altnnekadar.com/altin-hesaplama/">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://altnnekadar.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Altın Hesaplama", "item": "https://altnnekadar.com/altin-hesaplama/" }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="header-ticker">
+        <div class="container ticker-content">
+            <div class="demo-notice-badge">
+                <i class="fa-solid fa-flask"></i>
+                <span>Veri Kaynağı: Gösterge Kuru (Örnek Veri)</span>
+            </div>
+            <div class="ticker-items-scroll" id="tickerTrack"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../" class="brand-logo">
+                <i class="fa-solid fa-coins"></i>
+                <div class="logo-title">ALTN <span>Ne Kadar</span></div>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../">Ana Sayfa</a></li>
+                    <li><a href="../gram-altin/">Gram Altın</a></li>
+                    <li><a href="../ceyrek-altin/">Çeyrek Altın</a></li>
+                    <li><a href="../altin-hesaplama/" class="active">Altın Hesaplama</a></li>
+                    <li><a href="../altin-kar-zarar-hesaplama/">Kâr / Zarar</a></li>
+                    <li><a href="../altin-nedir/">Bilgi Rehberi</a></li>
+                </ul>
+
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Koyu/Açık Tema Değiştir">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li><a href="../">Ana Sayfa</a></li>
+                <li class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></li>
+                <li style="color: var(--text-primary);">Altın Hesaplama</li>
+            </ul>
+        </nav>
+
+        <h1>Gelişmiş Altın Hesaplama Aracı</h1>
+        <p style="margin-bottom: 20px; color: var(--text-secondary);">İstediğiniz altın türü ve miktarı için alış ve satış değerlerine göre TL karşılığını anında hesaplayın.</p>
+
+        <!-- Main Converter Tool Box -->
+        <section class="calculator-box">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                    <label for="fullCalcAsset">Altın Türü Seçin</label>
+                    <select id="fullCalcAsset" class="form-select">
+                        <option value="gram" selected>Gram Altın (24 Ayar)</option>
+                        <option value="ceyrek">Çeyrek Altın</option>
+                        <option value="yarim">Yarım Altın</option>
+                        <option value="tam">Tam Altın (Ziynet)</option>
+                        <option value="cumhuriyet">Cumhuriyet Altını</option>
+                        <option value="ata">Ata Altın (Ata Lirası)</option>
+                        <option value="bilezik22">22 Ayar Bilezik (Gram)</option>
+                        <option value="ayar14">14 Ayar Altın (Gram)</option>
+                        <option value="ons">Ons Altın ($)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullCalcCurrency">Hedef Para Birimi</label>
+                    <select id="fullCalcCurrency" class="form-select">
+                        <option value="try" selected>Türk Lirası (TL)</option>
+                        <option value="usd" disabled>Amerikan Doları ($) (Demo / Pasif)</option>
+                        <option value="eur" disabled>Euro (€) (Demo / Pasif)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                    <label for="fullCalcAmount">Miktar / Adet</label>
+                    <input type="number" id="fullCalcAmount" class="form-control" value="10" min="0.01" step="any">
+                </div>
+
+                <div class="form-group">
+                    <label for="fullCalcMode">İşlem Türü</label>
+                    <select id="fullCalcMode" class="form-select">
+                        <option value="sell">Bozdurma (Piyasaya Satıyorum / Alış Fiyatı)</option>
+                        <option value="buy">Satın Alma (Piyasadan Alıyorum / Satış Fiyatı)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Calculation Output Cards -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                <div class="calc-results-display">
+                    <div style="font-size: 11px; color: var(--text-muted);">BOZDURMA / ALIŞ DEĞERİNE GÖRE TUTAR</div>
+                    <div class="result-main-val" id="resBuyTotal" style="color: var(--text-primary);">₺0,00</div>
+                    <div style="font-size: 11px; color: var(--text-muted);" id="resBuyDetail">-</div>
+                </div>
+
+                <div class="calc-results-display" style="border-color: var(--gold-primary);">
+                    <div style="font-size: 11px; color: var(--gold-primary); font-weight: 700;">SATIN ALMA / SATIŞ DEĞERİNE GÖRE TUTAR</div>
+                    <div class="result-main-val" id="resSellTotal">₺0,00</div>
+                    <div style="font-size: 11px; color: var(--text-muted);" id="resSellDetail">-</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Placeholder -->
+        <div class="ad-slot-container">
+            <div class="ad-slot">Reklam Alanı</div>
+        </div>
+
+        <!-- Informational Guide Article -->
+        <article class="content-article">
+            <h2>Altın Hesaplaması Nasıl Yapılır?</h2>
+            <p>Altın hesaplama aracımız, seçtiğiniz altın türünün ağırlığı ve ayar derecesi esas alınarak anlık gösterge kurlarıyla çarpılması sonucu hesaplanır. Altın alırken satış kuru, altınınızı nakde çevirirken bozdurma (alış) kuru geçerlidir.</p>
+            <p>Alış ve satış fiyatları arasındaki fark <strong>makas aralığı (spread)</strong> olarak adlandırılır. Gram altın ve çeyrek altın gibi standart ürünlerde makas aralığı daha dar iken işçilikli takılarda daha geniş olabilmektedir.</p>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-disclaimer">
+                <p>Bu sitede yer alan fiyatlar bilgilendirme amaçlıdır. Veriler gecikmeli veya gösterge niteliğinde olabilir ve yatırım tavsiyesi niteliği taşımaz.</p>
+                <p style="margin-top: 6px;">© 2026 ALTN Ne Kadar. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/gold-data.js"></script>
+    <script src="../assets/js/calculators.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const assetSelect = document.getElementById('fullCalcAsset');
+            const amountInput = document.getElementById('fullCalcAmount');
+            const modeSelect = document.getElementById('fullCalcMode');
+
+            const resBuyTotal = document.getElementById('resBuyTotal');
+            const resBuyDetail = document.getElementById('resBuyDetail');
+            const resSellTotal = document.getElementById('resSellTotal');
+            const resSellDetail = document.getElementById('resSellDetail');
+
+            function updateFullCalc() {
+                if (!window.GoldCalculators || !window.GoldData) return;
+
+                const buyRes = window.GoldCalculators.calculateGoldValue(assetSelect.value, amountInput.value, 'sell'); // dealer buys
+                const sellRes = window.GoldCalculators.calculateGoldValue(assetSelect.value, amountInput.value, 'buy'); // dealer sells
+
+                resBuyTotal.textContent = window.GoldData.formatMoney(buyRes.totalTL);
+                resBuyDetail.textContent = `${buyRes.amount} birim × ${window.GoldData.formatMoney(buyRes.unitPrice)}`;
+
+                resSellTotal.textContent = window.GoldData.formatMoney(sellRes.totalTL);
+                resSellDetail.textContent = `${sellRes.amount} birim × ${window.GoldData.formatMoney(sellRes.unitPrice)}`;
+            }
+
+            [assetSelect, amountInput, modeSelect].forEach(el => {
+                if (el) el.addEventListener('change', updateFullCalc);
+                if (el) el.addEventListener('input', updateFullCalc);
+            });
+
+            updateFullCalc();
+        });
+    </script>
+</body>
+</html>
