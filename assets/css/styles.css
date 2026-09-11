@@ -542,16 +542,21 @@ a:hover {
     margin: 6px 0;
 }
 
-/* Ad Placement Component Placeholder */
-.ad-slot-container {
-    margin: 30px 0;
+/* Responsive Ad Placement Component System (Google AdSense Ready) */
+.ad-container, .ad-slot-container {
+    width: 100%;
+    max-width: 970px;
+    margin: 32px auto;
     display: flex;
     justify-content: center;
+    align-items: center;
+    clear: both;
+    box-sizing: border-box;
 }
 
-.ad-slot {
+.ad-placeholder, .ad-slot {
     width: 100%;
-    max-width: 728px;
+    max-width: 100%;
     min-height: 90px;
     background: var(--bg-secondary);
     border: 1px dashed var(--border-color);
@@ -561,7 +566,66 @@ a:hover {
     justify-content: center;
     color: var(--text-muted);
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.ad-container ins.adsbygoogle, .ad-slot-container ins.adsbygoogle {
+    display: block !important;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Optional Sidebar Layout for Large Desktop (>= 1200px) */
+@media (min-width: 1200px) {
+    .article-with-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 30px;
+        align-items: start;
+    }
+
+    .ad-container.ad-sidebar {
+        max-width: 300px;
+        margin: 0;
+    }
+
+    .ad-container.ad-sidebar .ad-placeholder {
+        min-height: 250px;
+    }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .ad-container, .ad-slot-container {
+        max-width: 728px;
+        margin: 28px auto;
+    }
+    
+    .ad-placeholder, .ad-slot {
+        min-height: 90px;
+    }
+}
+
+/* Mobile (<= 767px) */
+@media (max-width: 767px) {
+    .ad-container, .ad-slot-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 24px auto;
+        padding: 0 4px;
+        overflow-x: hidden;
+    }
+
+    .ad-placeholder, .ad-slot {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100px;
+        border-radius: var(--radius-sm);
+        font-size: 11px;
+    }
 }
 
 /* Article & Content Styling */
