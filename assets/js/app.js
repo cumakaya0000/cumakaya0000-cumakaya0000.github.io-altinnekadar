@@ -71,22 +71,7 @@ function highlightActiveNav() {
 
 // Render Header Top Status Badge
 function renderHeaderNoticeBadge() {
-    const badge = document.querySelector('.demo-notice-badge') || document.querySelector('.status-badge');
-    if (!badge || !window.GoldData) return;
-
-    const mode = window.GoldData.getMode(); // "live" | "fallback" | "offline"
-    const source = window.GoldData.getDataSource();
-
-    if (mode === 'live') {
-        badge.className = 'status-badge badge-live';
-        badge.innerHTML = `<i class="fa-solid fa-bolt"></i><span>LIVE (Canlı) - ${source}</span>`;
-    } else if (mode === 'fallback') {
-        badge.className = 'status-badge badge-fallback';
-        badge.innerHTML = `<i class="fa-solid fa-calculator"></i><span>FALLBACK (Gösterge) - ${source}</span>`;
-    } else {
-        badge.className = 'status-badge badge-offline';
-        badge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i><span>OFFLINE (Son Kayıtlı) - ${source}</span>`;
-    }
+    // Disabled / Removed
 }
 
 // Render Hero Live Status Meta Bar (Veri Kaynağı & Son Güncelleme & LIVE/FALLBACK/OFFLINE)
@@ -200,7 +185,7 @@ function renderMainPriceGrid() {
 
         if (isIndicator) {
             return `
-                <article class="price-card">
+                <article class="price-card" data-slug="${item.slug}">
                     <div class="card-top">
                         <h2 class="card-title"><a href="${prefix}${item.slug}/">${item.name}</a></h2>
                         <span class="card-badge">${item.code}</span>
@@ -211,6 +196,13 @@ function renderMainPriceGrid() {
                             <span class="price-val">${window.GoldData.formatMoney(item.sell, item.unit)}</span>
                         </div>
                     </div>
+                    <div class="card-calc-box">
+                        <div class="card-calc-input-group">
+                            <input type="number" class="card-calc-input" placeholder="Adet" min="0" step="any" data-price="${item.sell}" data-unit="${item.unit}" oninput="handleCardCalc(this)">
+                            <span class="card-calc-unit">Adet</span>
+                        </div>
+                        <div class="card-calc-result">= <span>0,00 ${item.unit}</span></div>
+                    </div>
                     <div class="card-footer-info">
                         <span class="change-badge ${changeClass}">${sign}%${item.change.toFixed(2)}</span>
                         <span style="color: var(--gold-primary); font-weight: 600;">[FALLBACK] Gösterge Veri</span>
@@ -219,7 +211,7 @@ function renderMainPriceGrid() {
             `;
         } else {
             return `
-                <article class="price-card">
+                <article class="price-card" data-slug="${item.slug}">
                     <div class="card-top">
                         <h2 class="card-title"><a href="${prefix}${item.slug}/">${item.name}</a></h2>
                         <span class="card-badge">${item.code}</span>
@@ -234,6 +226,13 @@ function renderMainPriceGrid() {
                             <span>${window.GoldData.formatMoney(item.buy, item.unit)}</span>
                         </div>
                     </div>
+                    <div class="card-calc-box">
+                        <div class="card-calc-input-group">
+                            <input type="number" class="card-calc-input" placeholder="Adet / Miktar" min="0" step="any" data-price="${item.sell}" data-unit="${item.unit}" oninput="handleCardCalc(this)">
+                            <span class="card-calc-unit">Adet</span>
+                        </div>
+                        <div class="card-calc-result">= <span>0,00 ${item.unit}</span></div>
+                    </div>
                     <div class="card-footer-info">
                         <span class="change-badge ${changeClass}">${sign}%${item.change.toFixed(2)}</span>
                         <span style="color: var(--accent-success); font-weight: 600;"><i class="fa-solid fa-bolt" style="font-size: 10px;"></i> [LIVE] Canlı Piyasa</span>
@@ -242,6 +241,22 @@ function renderMainPriceGrid() {
             `;
         }
     }).join('');
+}
+
+// Quick Inline Card Calculator Handler
+function handleCardCalc(inputEl) {
+    const qty = parseFloat(inputEl.value) || 0;
+    const price = parseFloat(inputEl.getAttribute('data-price')) || 0;
+    const unit = inputEl.getAttribute('data-unit') || '₺';
+    const resultEl = inputEl.closest('.card-calc-box').querySelector('.card-calc-result span');
+    
+    if (!resultEl) return;
+    const total = qty * price;
+    if (qty > 0) {
+        resultEl.innerHTML = window.GoldData ? window.GoldData.formatMoney(total, unit) : `${total.toLocaleString('tr-TR', {minimumFractionDigits: 2})} ${unit}`;
+    } else {
+        resultEl.innerHTML = `0,00 ${unit}`;
+    }
 }
 
 // Render Detail Hero Block (Subpages)

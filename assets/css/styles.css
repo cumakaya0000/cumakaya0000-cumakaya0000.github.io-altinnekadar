@@ -142,6 +142,8 @@ a:hover {
     align-items: center;
     gap: 6px;
     transition: all var(--transition);
+.demo-notice-badge {
+    display: none !important;
 }
 
 .badge-live {
@@ -784,4 +786,50 @@ a:hover {
     .detail-price-hero {
         grid-template-columns: 1fr;
     }
+}
+
+/* Inline Card Calculator Styles */
+.card-calc-box {
+    margin: 12px 0 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.card-calc-input-group {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 2px 6px;
+    width: 110px;
+}
+
+.card-calc-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+}
+
+.card-calc-unit {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: 4px;
+}
+
+.card-calc-result {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold-primary);
+    white-space: nowrap;
 }
