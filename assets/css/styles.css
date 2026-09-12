@@ -142,6 +142,8 @@ a:hover {
     align-items: center;
     gap: 6px;
     transition: all var(--transition);
+}
+
 .demo-notice-badge {
     display: none !important;
 }
