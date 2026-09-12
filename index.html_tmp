@@ -1,0 +1,393 @@
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ALTN Ne Kadar? | Güncel Altın Fiyatları ve Hesaplama</title>
+    <meta name="description" content="ALTN Ne Kadar ile gram altın, çeyrek altın, yarım altın, tam altın ve ons altın fiyatlarını takip edin. Altın hesaplama araçlarını kullanın." />
+    <link rel="canonical" href="https://altnnekadar.com/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="ALTN Ne Kadar? | Güncel Altın Fiyatları ve Hesaplama" />
+    <meta property="og:description" content="ALTN Ne Kadar ile gram altın, çeyrek altın, yarım altın, tam altın ve ons altın fiyatlarını takip edin. Altın hesaplama araçlarını kullanın." />
+    <meta property="og:url" content="https://altnnekadar.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ALTN Ne Kadar",
+  "alternateName": "altnnekadar",
+  "url": "https://altnnekadar.com/"
+}</script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9170680155087626" crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://altnnekadar.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Altın Fiyatları",
+          "item": "https://altnnekadar.com/"
+        }
+      ]
+    }</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="ALTN Ne Kadar" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ALTN Ne Kadar? | Güncel Altın Fiyatları ve Hesaplama" />
+  <meta name="twitter:description" content="ALTN Ne Kadar ile gram altın, çeyrek altın, yarım altın, tam altın ve ons altın fiyatlarını takip edin. Altın hesaplama araçlarını kullanın." />
+</head>
+<html lang="tr" data-theme="dark">
+
+<body>
+    <!-- Top Demo & Ticker Bar -->
+    <div class="header-ticker">
+        <div class="container ticker-content">
+            <div class="demo-notice-badge">
+                <i class="fa-solid fa-flask"></i>
+                <span>Veri Kaynağı: Kapalıçarşı Piyasa Verileri (Truncgil & Gold API)</span>
+            </div>
+            <div class="ticker-items-scroll" id="tickerTrack"></div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="/" class="brand-logo">
+                <i class="fa-solid fa-coins"></i>
+                <div class="logo-title">ALTN <span>Ne Kadar</span></div>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/" class="active">Ana Sayfa</a></li>
+                    <li><a href="gram-altin/">Gram Altın</a></li>
+                    <li><a href="ceyrek-altin/">Çeyrek Altın</a></li>
+                    <li><a href="altin-hesaplama/">Altın Hesaplama</a></li>
+                    <li><a href="altin-kar-zarar-hesaplama/">Kâr / Zarar</a></li>
+                    <li><a href="altin-nedir/">Bilgi Rehberi</a></li>
+                </ul>
+
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Koyu/Açık Tema Değiştir">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Title Header -->
+        <header class="hero-header-block">
+            <h1>ALTN Ne Kadar? Güncel Altın Fiyatları</h1>
+
+    <nav class="seo-links">
+      <a href="/gram-altin/">Gram altın fiyatı</a>
+      <a href="/ceyrek-altin/">Çeyrek altın fiyatı</a>
+      <a href="/yarim-altin/">Yarım altın fiyatı</a>
+      <a href="/tam-altin/">Tam altın fiyatı</a>
+      <a href="/ons-altin/">Ons altın fiyatı</a>
+      <a href="/altin-hesaplama/">Altın hesaplama aracı</a>
+    </nav>
+            <p class="hero-subtitle">Güncel altın fiyatlarını, alış-satış değerlerini ve altın hesaplama araçlarını tek ekrandan takip edin.</p>
+        </header>
+
+        <div class="ad-container ad-responsive">
+            <div class="ad-placeholder">
+                <span>Reklam Alanı</span>
+            </div>
+        </div>
+
+        <!-- Price Cards Grid -->
+        <section class="cards-grid" id="mainPriceGrid">
+            <!-- Dynamically populated or SSR fallback cards -->
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="gram-altin/">Gram Altın</a></h2>
+                    <span class="card-badge">GAU/TRY</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">₺3.485,40</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>₺3.480,10</span>
+                    </div>
+
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.82</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="ceyrek-altin/">Çeyrek Altın</a></h2>
+                    <span class="card-badge">CEYREK</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">₺5.698,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>₺5.620,00</span>
+                    </div>
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.75</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="yarim-altin/">Yarım Altın</a></h2>
+                    <span class="card-badge">YARIM</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">₺11.396,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>₺11.240,00</span>
+                    </div>
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.72</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="tam-altin/">Tam Altın</a></h2>
+                    <span class="card-badge">TAM</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">₺22.750,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>₺22.480,00</span>
+                    </div>
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.68</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="cumhuriyet-altini/">Cumhuriyet Altını</a></h2>
+                    <span class="card-badge">CUMHURİYET</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">₺23.480,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>₺23.150,00</span>
+                    </div>
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.90</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="ata-altin/">Ata Altın</a></h2>
+                    <span class="card-badge">ATA</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">₺23.490,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>₺23.160,00</span>
+                    </div>
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.88</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="22-ayar-bilezik/">22 Ayar Bilezik</a></h2>
+                    <span class="card-badge">22AYAR</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">₺3.245,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>₺3.180,50</span>
+                    </div>
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.78</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+
+            <article class="price-card">
+                <div class="card-top">
+                    <h2 class="card-title"><a href="ons-altin/">Ons Altın</a></h2>
+                    <span class="card-badge">XAU/USD</span>
+                </div>
+                <div class="card-prices">
+                    <div class="price-row highlight">
+                        <span>Satış:</span>
+                        <span class="price-val">$2.942,50</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Alış:</span>
+                        <span>$2.941,80</span>
+                    </div>
+                </div>
+                <div class="card-footer-info">
+                    <span class="change-badge positive">+%0.45</span>
+                    <span>Gösterge Kuru</span>
+                </div>
+            </article>
+        </section>
+
+        <!-- First Responsive Ad Container (Desktop 970x90 / Mobile 300x250) -->
+        <div class="ad-container ad-responsive">
+            <div class="ad-placeholder">
+                <span>Reklam Alanı</span>
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <!-- Quick Information Article -->
+        <article class="content-article">
+            <h2>Altın Fiyatları Nasıl Takip Edilir?</h2>
+            <p>Altın piyasaları, küresel ons altın fiyatı ve yerel döviz kurlarının (Dolar/TL) birleşimiyle şekillenir. Türkiye'de en çok tercih edilen yatırım araçlarından olan Gram Altın, Çeyrek Altın ve Cumhuriyet Altını gibi türlerin anlık piyasa değerlerini platformumuz üzerinden inceleyebilirsiniz.</p>
+            <p>Hızlı ve güvenilir altın birim dönüştürme işlemleri için <a href="altin-hesaplama/">Altın Hesaplama</a> aracımızı kullanabilir, mevcut altın yatırımlarınızın kârlılık durumunu öğrenmek için <a href="altin-kar-zarar-hesaplama/">Altın Kâr / Zarar Hesaplama</a> sayfamızı ziyaret edebilirsiniz.</p>
+        </article>
+
+        <!-- Second Responsive Ad Container (Pre-Footer) -->
+        <div class="ad-container ad-responsive">
+            <div id="liveStatusMetaBar" class="live-status-meta-bar">
+                <div class="meta-item"><span class="status-badge badge-live"><i class="fa-solid fa-circle-check"></i> LIVE</span></div>
+                <div class="meta-item"><i class="fa-solid fa-database highlight-text"></i> <strong>Veri Kaynağı:</strong> Kapalıçarşı Piyasa Verileri (Truncgil &amp; Gold API)</div>
+                <div class="meta-item"><i class="fa-solid fa-clock text-muted"></i> <strong>Son Güncelleme:</strong> 12 Eylül 2026 03:57:28</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="brand-logo" style="margin-bottom: 12px;">
+                        <i class="fa-solid fa-coins"></i>
+                        <div class="logo-title">ALTN <span>Ne Kadar</span></div>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-muted);">Güncel altın fiyatları, serbest piyasa kurları ve pratik finansal hesaplama araçları rehber platformu.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Altın Türleri</h4>
+                    <ul class="footer-links">
+                        <li><a href="gram-altin/">Gram Altın</a></li>
+                        <li><a href="ceyrek-altin/">Çeyrek Altın</a></li>
+                        <li><a href="yarim-altin/">Yarım Altın</a></li>
+                        <li><a href="tam-altin/">Tam Altın</a></li>
+                        <li><a href="cumhuriyet-altini/">Cumhuriyet Altını</a></li>
+                        <li><a href="ata-altin/">Ata Altın</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Araçlar & Rehber</h4>
+                    <ul class="footer-links">
+                        <li><a href="altin-hesaplama/">Altın Hesaplama</a></li>
+                        <li><a href="altin-kar-zarar-hesaplama/">Kâr / Zarar Hesaplama</a></li>
+                        <li><a href="altin-nedir/">Altın Nedir?</a></li>
+                        <li><a href="altin-ayari-nedir/">Altın Ayarı Nedir?</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kurumsal & Yasal</h4>
+                    <ul class="footer-links">
+                        <li><a href="hakkimizda/">Hakkımızda</a></li>
+                        <li><a href="iletisim/">İletişim</a></li>
+                        <li><a href="gizlilik-politikasi/">Gizlilik Politikası</a></li>
+                        <li><a href="cerez-politikasi/">Çerez Politikası</a></li>
+                        <li><a href="kullanim-kosullari/">Kullanım Koşulları</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-disclaimer">
+                <p>Bu sitede yer alan fiyatlar bilgilendirme amaçlıdır. Veriler gecikmeli veya gösterge niteliğinde olabilir ve yatırım tavsiyesi niteliği taşımaz.</p>
+                <p style="margin-top: 6px;">© 2026 ALTN Ne Kadar. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+<div class="live-data-info" style="text-align:center; font-size:12px; color:var(--text-muted); margin-top:12px;">
+LIVE
+Veri Kaynağı: Kapalıçarşı Piyasa Verileri (Truncgil &amp; Gold API)
+Son Güncelleme: 11 Eylül 2026 21:01:27
+</div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="assets/js/gold-data.js"></script>
+    <script src="assets/js/calculators.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
